@@ -2,8 +2,8 @@
 
 This repository contains the code used to produce the results for the spatial transcriptomics analysis:
 
-**Braun et al. – _Multimodal Profiling Reveals Actionable Vulnerabilities in CAR T–Derived T-Cell Lymphoma _**  
-*(manuscript not yet released)*
+> Braun et al. – Multimodal Profiling Reveals Actionable Vulnerabilities in CAR T–Derived T-Cell Lymphoma 
+> (manuscript not yet released)
 
 ---
 
