@@ -1,0 +1,119 @@
+{
+  "Keratinocyte": [
+    "KRTDAP","KRT1","KRT5","SFN","S100A2","MIR205HG","LY6D","DMKN","S100A14",
+    "SBSN","AQP3","KRT16","DSP","SERPINB5","COL17A1","LGALS7B","DSC3","FGFBP1",
+    "KRT15","KLF5","PKP1","DEFB1","CCL27","LYPD3","C19orf33","TRIM29","JUP",
+    "SLC2A1","CXADR","DSG1"
+  ],
+
+  "Melanocyte_malignant": [
+    "MLANA","PMEL","DCT","CAPN3","MITF","SNCA","TYR","MIA","CHCHD6","TRPM1",
+    "QPCT","MFSD12","MCOLN3","TUBB2B","SYNGR1","S100A1","SLC24A5","MOK","C6orf1",
+    "LSAMP","PAX3","SOX10","QDPR","PLXNC1","TBC1D16","CDK2","SLC6A15","CDH19",
+    "SCD","GMPR"
+  ],
+
+  "Glandular_cell": [
+    "DCD","FADS2","SCGB2A2","KRT79","FASN","PIP","ACSBG1","KRT7","ALOX15B",
+    "THRSP","MUCL1","SCGB1B2P","KRT19","AQP5","ACSL1","SCGB1D2","TMEM91",
+    "CIDEA","AACS","SAA1","BRI3BP","KRT18","KRT8","TLCD4","DHCR24","SRD5A1",
+    "DHCR7","TM7SF2","CLDN4","ALDH3B2"
+  ],
+  "Monocyte": [
+        "FCER1G",
+        "LYZ",
+        "S100A9",
+        "SRGN",
+        "TSPO",
+        "FCN1",
+        "TYROBP"
+    ],
+  "Macrophage": [
+        "C1QA",
+        "C1QB",
+        "C1QC",
+        "CSF1R",
+        "CST3",
+        "SELENOP"
+    ],
+     "DC": [
+        "CLEC9A",
+        "CLEC10A",
+        "CD1C",
+        "CLEC4C",
+        "XCR1",
+        "LAMP3"
+    ],
+  "Endothelial": [
+    "MMRN1","SELE","DARC","CLDN5","GNG11","RAMP2","ECSCR","PLVAP","FABP4",
+    "AQP1","CCL21","ELTD1","EMCN","TM4SF1","TFPI","SDPR","RAMP3","EGFL7",
+    "NPDC1","CD93","LMO2","TSHZ2","CCL14","HYAL2","NRN1","IL33","ZNF385D",
+    "ADAMTS9","CYYR1","MTUS1"
+  ],
+
+  "Fibroblast": [
+    "DCN","FBLN1","LUM","SFRP2","MMP2","COL3A1","WISP2","MFAP5","CCDC80",
+    "CTSK","FBLN2","MFAP4","FSTL1","COL6A2","IGFBP6","PI16","COL5A2","C1S",
+    "COL6A3","VCAN","DPT","CYBRD1","PLAC9","C1R","MXRA8","PDGFRL","C3",
+    "OLFML3","PCOLCE","THY1"
+  ],
+
+  "Pericyte": [
+    "TAGLN","TPM2","MYL9","RGS5","MYH11","RERGL","PLN","SORBS2","MYLK","CNN1",
+    "HES4","LBH","ADRA2A","SYNPO2","MCAM","RGS16","NOTCH3","ID4","PPP1R14A",
+    "RRAD","TINAGL1","NDUFA4L2","COX4I2","TNS1","CCDC3","LMOD1","MAP3K7CL",
+    "MT1A","RCAN2","ITGA7"
+  ],
+
+  "Mast_cell": [
+    "TPSB2","TPSAB1","CPA3","CTSG","HPGD","MS4A2","HPGDS","GATA2","KIT",
+    "ADCYAP1","HDC","IL1RL1","RHEX","CMA1","LTC4S","SLC18A2","RGS13","VWA5A",
+    "GCSAML","LIF","AL157895.1","NDST2","RAB27B"
+  ],
+
+  "Erythrocyte": [
+    "HBB","HBA2","HBA1","HBD","HBM","STRADB"
+  ],
+
+  "Conventional_CD4": [
+    "CD3D","CD4","CD40LG","CCR7","IL7R"
+  ],
+
+  "Treg": [
+    "CD27","FOXP3","CTLA4","CD3D","TIGIT","IL2RA"
+  ],
+
+  "Conventional_CD8": [
+    "CCL5","CD2","CD3D","CD8A","CD8B","GZMB","PRF1"
+  ],
+
+  "Cycling_T_NK": [
+    "ARHGDIB","CORO1A","HMGB2","RAC2","TUBA1B","TYMS",
+    "MKI67","TOP2A","PCNA"
+  ],
+
+  "NK": [
+    "GNLY","KLRD1","NKG7","XCL1","CTSW","XCL2",
+    "KLRC1","PRF1","KLRK1","CD7","KLRB1","GZMA"
+  ],
+
+  "B_plasma": [
+    "XBP1",
+    "MZB1",
+    "IGHA1",
+    "IGKC",
+    "JCHAIN",
+    "SDC1",
+    "IGHG1",
+    "IGHG2",
+    "IGHG3", 
+    "IGHG4"
+  ],
+  "Immature_B": [
+    "CD79B","IGHM","RCSD1"
+  ],
+
+  "Mature_B": [
+    "CD74","CD79A","ICAM3","MS4A1"
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "Epithelial": [
+    "KRT5","KRT1","KRT8","KRT18","KRT19","KRT15","KRT16",
+    "KRTDAP","DSG1","DSC3","COL17A1","AQP3","MIR205HG",
+    "SFN","S100A2","LGALS7B",
+    "KRT7","KRT79","SCGB2A2","MUCL1","SCGB1D2","SCGB1B2P",
+    "AQP5","CLDN4","FASN","FADS2","PIP",
+    "PMEL","MLANA","DCT","MITF","TYR","SOX10","TRPM1"
+  ],
+
+  "Myeloid": [
+    "LYZ","AIF1","LST1","TYROBP","FCER1G","C1QA","C1QC",
+    "CLEC7A","CLEC10A","CD68","MMP9","IL1B","RNASE6","FCGR2A",
+    "TPSAB1","TPSB2","CPA3","HPGDS","GATA2","MS4A2","KIT",
+    "HBB","HBA2","HBA1","HBD"
+  ],
+
+  "Mesenchymal": [
+    "COL1A1","COL3A1","COL6A3","COL6A2","COL5A2",
+    "DCN","LUM","FBLN1","FBLN2","DPT","THY1","VCAN",
+    "FSTL1","MFAP5","IGFBP6","CTSK",
+    "TAGLN","ACTA2","MYH11","MYL9","RGS5","MCAM","NOTCH3",
+    "MYLK","CNN1","NDUFA4L2","COX4I2","LMOD1"
+  ],
+
+  "T and NK cells": [
+    "CD3D","CD3E","CD2","CD4","CD8A","CD8B","TRAC",
+    "CCL5","GZMB","GZMA","PRF1","GNLY","NKG7",
+    "KLRD1","KLRK1","KLRC1","XCL1","XCL2","CTSW","CD7","KLRB1"
+  ],
+
+  "Endothelial": [
+    "PECAM1","CLDN5","MMRN1","SELE","DARC","RAMP2",
+    "EGFL7","RAMP3","PLVAP","AQP1","EMCN","ECSCR",
+    "TFPI","CD93","ELTD1","NPDC1","FABP4"
+  ],
+
+  "Neural": [
+    "TUBB3","MAP1B","PLP1","S100B","SOX10","NREP","ELAVL4","SNAP25"
+  ],
+
+  "B and B plasma": [
+    "CD79A","CD79B","MS4A1","IGHM","CD74",
+    "XBP1","MZB1","JCHAIN","SDC1","IGKC",
+    "IGHG1","IGHG2","IGHG3","IGHG4","IGHA1"
+  ]
+}

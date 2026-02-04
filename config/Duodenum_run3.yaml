@@ -1,0 +1,35 @@
+sample_name: Duodenum_run3
+sample_path: data/spaceranger/Duodenum_run3/outs
+
+min_genes_08: 30
+min_counts_08: 50
+min_genes: 100
+min_counts: 200
+max_mito: 15
+min_cells_per_type: 10
+
+clustering_group: leiden_HERGAST_0_5
+
+l1_json_file: assets/CAR_T_Lymphom/marker_gene_set_duo_l1_curated_longlist.json
+l1_auc_cutoff: 0.05
+l2_json_file: assets/CAR_T_Lymphom/marker_gene_set_duo_l2_curated.json
+l2_auc_cutoff: 0.1
+l2_to_l1_mapping_file: assets/CAR_T_Lymphom/gi_mapping_l2_to_l1.json
+color_mappings: assets/CAR_T_Lymphom/color_maps.json
+
+cropping_fraction:
+  xfrac: [0.07, 0.30]
+  yfrac: [0.10, 0.35]
+
+cluster_color_mapping:
+  "0": "#1e76b4"
+  "1": "#ff7e0c"
+  "2": "#8c564b"
+  "3": "#279e68"
+  "4": "#a93ffc"
+  "5": "#d62728"
+  "6": "#e376c2"
+  "7": "#b4bc60"
+  "8": "#18becf"
+  "9": "#aec7e8"
+  "10": "#ffbb78"

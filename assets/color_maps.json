@@ -1,0 +1,233 @@
+{
+  "celltype_colors_skin": {
+    "Conventional_CD4":        "#4A6ACB",
+    "Conventional_CD8":        "#6E89F2",
+    "Treg":                    "#293E7E",
+    "Unconventional_T/ILC":    "#9CB1E8",
+    "Cycling_T/NK":            "#5F97C9",
+    "fibroblasts":                      "#75356F",
+    "NK cells":                         "#003b84",
+    "Glandular cells":                  "#ff0000",
+    "macrophages and dendritic cells":  "#f9fc5f",
+    "B_plasma":                "#2ECC71",
+    "Immature_B":              "#58D68D",
+    "Mature_B":                "#82E0AA",
+    "Plasma cells":                     "#2ECC71",
+    "endothelial cells":                "#FF7F0E",
+    "keratinocytes":                    "#E5B44A",
+    "pericytes":                        "#A07F65",
+    "melanocytes/malignant cells":      "#fa00ff",
+    "Mast cells":                       "#B86482",
+    "erythrocytes":                     "#C93A3A",
+    "Undetermined":            "#D6D6D6"
+  },
+"celltype_colors_duo_l1": {
+  "B and B plasma":      "#2ECC71",
+  "Endothelial":         "#FF7F0E",
+  "Epithelial":          "#C79AF7",
+  "Mesenchymal":         "#75356F",
+  "Myeloid":             "#2E9B54",
+  "Neural":              "#000000",
+  "T and NK cells":      "#3E73B4",
+  "Undetermined":        "#D6D6D6",
+  "Ambiguous":           "#D6D6D6"
+  },
+  "celltype_colors_duo_l2": {
+    "Absorptive":              "#C79AF7",
+    "Secretory":               "#7A2F3F",
+    "Enteroendocrine":         "#B9A9D6",
+    "Microfold":               "#8E4B88",
+    "Mesothelium":             "#A23FA4",
+
+    "Epithelial_progenitor":   "#E3B8C6",
+    "Epithelial_stem":         "#F3DEC4",
+    "Transit_amplifying":      "#E9C450",
+    "Cycling_epithelia":       "#D27F62",
+
+    "Macrophage":              "#2E9B54",
+    "Monocyte":                "#6BCF87",
+    "DC":                      "#2B5E3C",
+    "Granulocyte":             "#3B8648",
+    "Erythrocyte":             "#E63404",
+
+    "Conventional_CD4":        "#4A6ACB",
+    "Conventional_CD8":        "#6E89F2",
+    "Treg":                    "#293E7E",
+    "Unconventional_T/ILC":    "#9CB1E8",
+    "Cycling_T/NK":            "#5F97C9",
+
+    "NK":                      "#3E73B4",
+
+    "Fibroblast":              "#75356F",
+    "Myofibroblast":           "#B164A9",
+    "Smooth_muscle":           "#5C2E6A",
+    "Pericyte":                "#4A6A55",
+    "Mesoderm":                "#5E8C9A",
+    "Intestinal_Cajal_cell":   "#A79BB8",
+    "Lymphoid_stromal_cell":   "#C9B4CF",
+
+    "Vascular_endothelia":     "#FF7F0E",
+    "Lymphatic_endothelia":    "#FF9F43",
+    "Cycling_endothelia":      "#FFBF78",
+
+    "Neuron":                  "#000000",
+    "Glia":                    "#555555",
+    "Neuron_progenitor":       "#888888",
+
+    "B_plasma":                "#2ECC71",
+    "Immature_B":              "#58D68D",
+    "Mature_B":                "#82E0AA",
+
+    "Undetermined":            "#D6D6D6",
+    "Ambiguous":               "#D6D6D6"
+  },
+  "celltype_colors_duo_l2_myloid": {
+    "Absorptive":              "#C79AF7",
+    "Secretory":               "#7A2F3F",
+    "Enteroendocrine":         "#B9A9D6",
+    "Microfold":               "#8E4B88",
+    "Mesothelium":             "#A23FA4",
+
+    "Epithelial_progenitor":   "#E3B8C6",
+    "Epithelial_stem":         "#F3DEC4",
+    "Transit_amplifying":      "#E9C450",
+    "Cycling_epithelia":       "#D27F62",
+
+    "Pan_Myeloid":              "#2E9B54",
+    "Granulocyte":             "#3B8648",
+    "Erythrocyte":             "#E63404",
+
+    "Conventional_CD4":        "#4A6ACB",
+    "Conventional_CD8":        "#6E89F2",
+    "Treg":                    "#293E7E",
+    "Unconventional_T/ILC":    "#9CB1E8",
+    "Cycling_T/NK":            "#5F97C9",
+
+    "NK":                      "#3E73B4",
+
+    "Fibroblast":              "#75356F",
+    "Myofibroblast":           "#B164A9",
+    "Smooth_muscle":           "#5C2E6A",
+    "Pericyte":                "#4A6A55",
+    "Mesoderm":                "#5E8C9A",
+    "Intestinal_Cajal_cell":   "#A79BB8",
+    "Lymphoid_stromal_cell":   "#C9B4CF",
+
+    "Vascular_endothelia":     "#FF7F0E",
+    "Lymphatic_endothelia":    "#FF9F43",
+    "Cycling_endothelia":      "#FFBF78",
+
+    "Neuron":                  "#000000",
+    "Glia":                    "#555555",
+    "Neuron_progenitor":       "#888888",
+
+    "B_plasma":                "#2ECC71",
+    "Immature_B":              "#58D68D",
+    "Mature_B":                "#82E0AA",
+
+    "Undetermined":            "#D6D6D6",
+    "Ambiguous":               "#D6D6D6"
+  },
+  "base_color_map": {
+    "B and B plasma": "#1f77b4",
+    "Endothelial": "#ff7f0e",
+    "Epithelial": "#024b02",
+    "Epithelial (absorptive)": "#2bf5da",
+    "Epithelial (progenitor)": "#2ca02c",
+    "Epithelial (secretory)": "#98df8a",
+    "Myeloid_granulocyte": "#9467bd",
+    "Myeloid_phagocyte": "#fa88f4",
+    "NK cells": "#e7fa3d",
+    "Neural": "#8c564b",
+    "Stromal (mesenchymal)": "#d62770",
+    "Stromal (vascular support)": "#fd0000",
+    "T cells": "#f89bc3",
+    "Undetermined": "#d6d6d6",
+    "ambiguous": "#d6d6d6"
+  },
+  "cell_type_colors" : {
+    "B and B plasma":      "#2ECC71",
+    "Endothelial":         "#FF7F0E",
+    "Epithelial":          "#C79AF7",
+    "Mesenchymal":         "#75356F",
+    "Myeloid":             "#2E9B54",
+    "Neural":              "#000000",
+    "T and NK cells":      "#3E73B4",
+    "Undetermined":        "#D6D6D6",
+    "Ambiguous":           "#D6D6D6"
+},
+  "cell_type_duo_l0" : {
+    "Epithelial":      "#024b02",  
+    "Neural":          "#8C6D31", 
+    "Immune_general":  "#e7fa3d",  
+    "Mesenchymal":     "#d62770",  
+    "Endothelial" :   "#FF7F00",
+    "Undetermined":    "#BEBEBE" 
+  },
+  "skin_l1": {
+    "Epidermal": "#024b02",
+    "Mesenchymal": "#d62770",
+    "Vascular": "#ff7f0e",
+    "Myeloid": "#9467bd",
+    "T and NK cells": "#f89bc3",
+    "B and B Plasma": "#1f77b4",
+    "Undetermined": "#d6d6d6"
+  },
+
+  "skin_l2": {
+    "T cells": "#f89bc3",
+    "NK cells": "#e7fa3d",
+    "B cells": "#1f77b4",
+    "Plasma cells": "#8da0cb",
+    "Epidermal – Keratinocyte/Appendage": "#024b02",
+    "Epidermal – Pigment/Neuroendocrine": "#037d0b",
+    "Mesenchymal – Fibroblast": "#d62770",
+    "Mesenchymal – Vascular Support": "#ff7f0e",
+    "Myeloid – Phagocyte/APC": "#9467bd",
+    "Myeloid – Granulocyte/Effector": "#7f3fbf",
+    "Undetermined": "#d6d6d6"
+  },
+
+  "bml1": {
+    "Myeloid": "#9467bd",
+    "Erythroid": "#d62728",
+    "Megakaryocyte/Platelet": "#ff9896",
+    "T and NK cells": "#f89bc3",
+    "B and B plasma": "#1f77b4",
+    "Stromal/Mesenchymal": "#8c564b",
+    "Endothelial/Vascular": "#ff7f0e",
+    "Undetermined": "#d6d6d6"
+  },
+
+  "bml2": {
+    "Myeloid_Granulocytes": "#7f3fbf",
+    "Myeloid_Monocytes_Macrophages": "#9467bd",
+    "Myeloid_Dendritic": "#b5a0d2",
+    "Myeloid_MDSC": "#5e3b99",
+    "Myeloid_OsteoclastLineage": "#6d54a3",
+    "Erythroid": "#d62728",
+    "Erythroid_Precursors": "#e6550d",
+    "Erythroid_Reticulocytes": "#fd8d3c",
+    "Megakaryocyte/Platelet": "#ff9896",
+    "T cells": "#f89bc3",
+    "T_Lymphoid_Cytotoxic": "#ffb3c6",
+    "T_Lymphoid_Treg": "#e377c2",
+    "T_Lymphoid_Memory": "#fabed4",
+    "T_Lymphoid_Tfh": "#fdd0e6",
+    "T_Lymphoid_GammaDelta": "#f781bf",
+    "T_Lymphoid_NKT": "#ffe6f2",
+    "NK cells": "#e7fa3d",
+    "T_Lymphoid_Other": "#f89bc3",
+    "T_Lymphoid_Thymic": "#f89bc3",
+    "B cells": "#1f77b4",
+    "B plasma": "#8da0cb",
+    "Stromal/Mesenchymal": "#8c564b",
+    "Stromal_Fibroblasts": "#a67c6b",
+    "Stromal_AdipoProgenitors": "#c49c94",
+    "Stromal_Pericytes": "#9c755f",
+    "Stromal_Chondrocytes": "#b48b7d",
+    "Endothelial/Vascular": "#ff7f0e",
+    "HSPC_or_Unknown": "#d6d6d6",
+    "Undetermined": "#d6d6d6"
+  }
+}

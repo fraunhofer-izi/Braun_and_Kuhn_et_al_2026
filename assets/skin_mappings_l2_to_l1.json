@@ -1,0 +1,33 @@
+{
+  "Epithelial": [
+    "Keratinocyte",
+    "Glandular_cell",
+    "Melanocyte_malignant"
+  ],
+  "Myeloid": [
+    "Monocyte",
+    "Macrophage",
+    "DC",
+    "Mast_cell",
+    "Erythrocyte"
+  ],
+  "Mesenchymal": [
+    "Fibroblast",
+    "Pericyte"
+  ],
+  "T and NK cells": [
+    "Conventional_CD4",
+    "Treg",
+    "Conventional_CD8",
+    "NK",
+    "Cycling_T_NK"
+  ],
+  "Endothelial": [
+    "Endothelial"
+  ],
+  "B and B plasma": [
+    "B_plasma",
+    "Immature_B",
+    "Mature_B"
+  ]
+}

@@ -1,0 +1,29 @@
+sample_name: Skin
+sample_path: data/spaceranger/Skin/outs
+
+min_genes_08: 30
+min_counts_08: 50
+min_genes: 30
+min_counts: 50
+max_mito: 15
+
+l1_json_file: assets/CAR_T_Lymphom/marker_gene_set_skin_l1_curated_longlist.json
+l1_auc_cutoff: 0.05
+l2_json_file: assets/CAR_T_Lymphom/marker_gene_set_skin_l2_curated_longlist_momaDC.json
+l2_auc_cutoff: 0.1
+l2_to_l1_mapping_file: assets/CAR_T_Lymphom/skin_mappings_l2_to_l1.json
+color_mappings: assets/CAR_T_Lymphom/color_maps.json
+
+cropping_fraction:
+  xfrac: [0.45, 0.65]
+  yfrac: [0.15, 0.30]
+
+clustering_group: leiden_HERGAST_0_3
+cluster_color_mapping:
+  "0": "#1e76b4"
+  "1": "#ff7e0c"
+  "2": "#279e68"
+  "3": "#d62728"
+  "4": "#a93ffc"
+  "5": "#8c564b"
+  "6": "#e376c2"
