@@ -49,7 +49,13 @@ A predefined Conda environment file is included in the repository.
 You can recreate the environment by running:
 
 ```bash
-make conda_env_create
+make conda_env_create ENV_NAME=spatialenv
+```
+
+### Run 
+
+```
+make all ENV_NAME=spatialenv
 ```
 
 ## Coding Guidelines
