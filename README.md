@@ -1,8 +1,8 @@
-# Braun et al. 2026 – Spatial Transcriptomics Analysis
+# Braun and Kuhn et al. 2026 – Spatial Transcriptomics Analysis
 
 This repository contains the code used to produce the results for the spatial transcriptomics analysis:
 
-> Braun et al. – Multimodal Profiling Reveals Actionable Vulnerabilities in CAR T–Derived T-Cell Lymphoma 
+> Braun and Kuhn et al. – Multimodal Profiling Reveals Actionable Vulnerabilities in CAR T–Derived T-Cell Lymphoma 
 > (manuscript not yet released)
 
 ---
@@ -19,7 +19,7 @@ The workflows cover preprocessing of SpaceRanger output, clustering of cells, an
 ### Visium HD Data Analysis
 
 The analysis of Visium HD samples was conducted using **Python**.
-The pipeline consists of several modular scripts and two notebooks for downstream analysis and figure creation:
+The pipeline consists of several modular scripts (Makefile) and two notebooks for downstream analysis and figure creation (Jupyter Notebooks):
 
 | Step | Script | Description |
 |------|--------|-------------|
