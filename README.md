@@ -9,47 +9,29 @@ This repository contains the code used to produce the results for the spatial tr
 
 ## Overview
 
-This project provides analysis pipelines for **spatial transcriptomics data** generated using the **10x Genomics Visium** and **Visium HD** platforms.  
-The workflows cover preprocessing, annotation, and downstream analysis required to reproduce the study results.
+This project provides the analysis pipeline for **spatial transcriptomics data** generated using the **10x Visium HD** platform.  
+The workflows cover preprocessing of SpaceRanger output, clustering of cells, annotation of celltypes, and downstream analysis required to reproduce the study results.
 
 ---
 
 ## Analysis Structure
 
-### Visium Data Analysis (Lower Resolution)
+### Visium HD Data Analysis
 
-The analysis of standard Visium samples was conducted in **R**.
-
-Please refer to the dedicated README inside the corresponding Visium analysis directory for:
-
-- Installation instructions  
-- Required dependencies  
-- Usage examples  
-- Output descriptions  
-
----
-
-### Visium HD Data Analysis (Higher Resolution)
-
-The analysis of Visium HD samples was conducted using a combination of **Python** and **R**.  
-The pipeline consists of several modular scripts:
+The analysis of Visium HD samples was conducted using **Python**.
+The pipeline consists of several modular scripts and two notebooks for downstream analysis and figure creation:
 
 | Step | Script | Description |
 |------|--------|-------------|
-| Stain Deconvolution | `stain_deconvolution.py` | Separates histological stains for improved image processing |
-| Segmentation | `bin2cell-workflow.py` | Converts Visium HD bins into single-cell–like objects |
-| Single-Cell Reference Generation | `generate_sc_reference.py` | Builds reference datasets for annotation |
-| Cell Type Annotation | `tacco-annotate.py` | Annotates cell types using TACCO |
-| Image Rotation / Alignment | `rotate-sample.py` | Adjusts orientation of spatial images |
+| Read SpaceRanger output | `read_spaceRangerv4.py` | Reads SpaceRanger v4 output including segmented cells into a SpatialData object |
+| Quality Control | `spatial_data_qc.py` | Does QC control steps of cells/genes |
+| Clustering | `norm_and_cluster.py` | Performs spatially-aware clustering of cells |
+| Annoation | `annotation_with_aucell.py` | Annotates cell types using AuCell |
 
----
-
-## Coding Guidelines
-
-No strict style guide was enforced during development.  
-However, code formatting consistency is maintained using:
-
-- **Black** (Python code formatter)
+| Notebook | Script | Description |
+|------|--------|-------------|
+| Spatial Regions and Local Niches | `01_SpatialRegions_and_LocalNiches.ipyb` | Plots generated from Spatial Regions and Local Niches Analysis  |
+| CAR T microenvironment | `02_CART_microenvironemnt.ipyb` | Plots generated from CAR T microenvironment analysis (Neighboorhood, DEGs, Receptor-Ligand) |
 
 ---
 
@@ -68,3 +50,13 @@ You can recreate the environment by running:
 
 ```bash
 make conda_env_create
+```
+
+## Coding Guidelines
+
+No strict style guide was enforced during development.  
+However, code formatting consistency is maintained using:
+
+- **Black** (Python code formatter)
+
+---
