@@ -1,7 +1,7 @@
 .PHONY: conda_env_create 00_download_data 01_read 02_qc 03_cluster 04_anno all
 
 # User-overridable settings
-SAMPLES ?= Skin
+SAMPLES ?= Skin Duodenum_run3
 BASE_OUTPUT ?= results
 ENV_FILE ?= environment.yml
 ENV_NAME ?= spatialenv_publication

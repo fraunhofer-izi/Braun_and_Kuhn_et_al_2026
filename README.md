@@ -1,68 +1,176 @@
 # Braun and Kuhn et al. 2026 – Spatial Transcriptomics Analysis
 
-This repository contains the code used to produce the results for the spatial transcriptomics analysis:
+This repository contains the code used to reproduce the spatial transcriptomics analysis presented in:
 
-> Braun and Kuhn et al. – Multimodal Profiling Reveals Actionable Vulnerabilities in CAR T–Derived T-Cell Lymphoma 
+> Braun and Kuhn et al. – *Multimodal Profiling Reveals Actionable Vulnerabilities in CAR T–Derived T-Cell Lymphoma*
 > (manuscript not yet released)
 
 ---
 
-## Overview
+# Repository Structure
 
-This project provides the analysis pipeline for **spatial transcriptomics data** generated using the **10x Visium HD** platform.  
-The workflows cover preprocessing of SpaceRanger output, clustering of cells, annotation of celltypes, and downstream analysis required to reproduce the study results.
-
----
-
-## Analysis Structure
-
-### Visium HD Data Analysis
-
-The analysis of Visium HD samples was conducted using **Python**.
-The pipeline consists of several modular scripts (Makefile) and two notebooks for downstream analysis and figure creation (Jupyter Notebooks):
-
-| Step | Script | Description |
-|------|--------|-------------|
-| Read SpaceRanger output | `read_spaceRangerv4.py` | Reads SpaceRanger v4 output including segmented cells into a SpatialData object |
-| Quality Control | `spatial_data_qc.py` | Does QC control steps of cells/genes |
-| Clustering | `norm_and_cluster.py` | Performs spatially-aware clustering of cells |
-| Annoation | `annotation_with_aucell.py` | Annotates cell types using AuCell |
-
-| Notebook | Script | Description |
-|------|--------|-------------|
-| Spatial Regions and Local Niches | `01_SpatialRegions_and_LocalNiches.ipyb` | Plots generated from Spatial Regions and Local Niches Analysis  |
-| CAR T microenvironment | `02_CART_microenvironemnt.ipyb` | Plots generated from CAR T microenvironment analysis (Neighboorhood, DEGs, Receptor-Ligand) |
+```text
+.
+├── assets/                     # Marker gene sets, color maps, mappings
+├── config/                     # Sample-specific YAML configuration files
+├── data/                       # Input data directories
+├── notebooks/                  # **Figure generation notebook**
+├── results/                    # Intermediate and final outputs
+├── scripts/                    # Main analysis pipeline scripts
+├── spatial_transcriptomics_analysis/
+│   └── scripts/                # Reusable helper modules
+├── environment.yml             # Conda environment
+├── pyproject.toml              # Python package configuration
+├── Makefile                    # Pipeline execution commands
+└── README.md
+```
 
 ---
 
-## Reproducibility & Environment Setup
+# Reproducibility
 
-We use **Conda** for dependency management.
+## 1. Clone Repository
+
+```bash
+git clone <repository-url>
+cd Braun_and_Kuhn_et_al_2026
+```
+
+---
+
+## 2. Create Environment and install local package
+
+```bash
+make conda_env_create
+```
+This command will:
+
+Create or update the Mamba environment
+Install the local `spatial_transcriptomics_analysis package in editable mode
 
 ### Requirements
 
-- Install **Miniconda** or **Anaconda**
-
-### Create the Environment
-
-A predefined Conda environment file is included in the repository.  
-You can recreate the environment by running:
-
-```bash
-make conda_env_create ENV_NAME=spatialenv
-```
-
-### Run 
-
-```
-make all ENV_NAME=spatialenv
-```
-
-## Coding Guidelines
-
-No strict style guide was enforced during development.  
-However, code formatting consistency is maintained using:
-
-- **Black** (Python code formatter)
+- Conda/Miniconda
+- Mamba
 
 ---
+
+## 3. Run Pipeline 
+
+The full analysis pipeline can be executed using:
+
+```bash
+make all
+```
+
+The pipeline consists of the following stages:
+
+| Step                    | Script                 | Description                       |
+| ----------------------- | ---------------------- | --------------------------------- |
+| Download data           | `00_download_data/`    | Download and organize input data   |
+| Read SpaceRanger output | `01_read_spaceranger/` | Create SpatialData objects        |
+| Quality control         | `02_qc/`               | Cell and gene filtering           |
+| Clustering              | `03_cluster/`          | Spatial clustering and embedding  |
+| Annotation              | `04_annotation/`       | Cell type annotation using AUCell |
+
+Intermediate results are stored in:
+
+```text
+results/
+├── zarr_before_qc/
+├── zarr_after_qc/
+├── zarr_after_cluster/
+├── zarr_after_anno/
+└── figures/
+```
+
+---
+
+
+# 4. Publication Figures
+
+Publication figures are generated using:
+
+```text
+notebooks/PlotsForPublication.ipynb
+```
+
+The notebook reproduces:
+
+* neighborhood enrichment analyses
+* ligand–receptor interaction plots
+* spatial niche visualizations
+* marker gene plots
+* publication-ready summary figures
+
+Generated figures are stored in:
+
+```text
+results/publication_plots/
+```
+
+---
+
+# Configuration Files
+
+Sample-specific settings are stored in:
+
+```text
+config/
+├── Duodenum_run3.yaml
+└── Skin.yaml
+```
+
+These files define:
+
+* sample names
+* clustering parameters
+* annotation settings
+
+---
+
+# Assets
+
+The `assets/` directory contains curated resources used for annotation and plotting:
+
+* marker gene sets
+* cell type mapping dictionaries
+* color palettes
+
+---
+
+# Software Versions
+
+The analysis was developed and tested using:
+
+* Python 3.11
+* Scanpy
+* Squidpy
+* SpatialData
+* LIANA
+
+Exact package versions of all packages are defined in:
+
+```text
+environment.yml
+```
+
+---
+
+# Notes
+
+* The repository uses editable installation via `pyproject.toml`.
+
+---
+
+# Citation
+
+If you use this repository, please cite:
+
+> Braun and Kuhn et al. – *Multimodal Profiling Reveals Actionable Vulnerabilities in CAR T–Derived T-Cell Lymphoma*
+
+---
+
+# Contact
+
+For questions regarding the analysis pipeline, please open an issue in the repository.
