@@ -86,7 +86,6 @@ results/
 
 ---
 
-
 # 4. Publication Figures
 
 Publication figures are generated using:
