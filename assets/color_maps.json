@@ -215,6 +215,7 @@
     "T_Lymphoid_Memory": "#fabed4",
     "T_Lymphoid_Tfh": "#fdd0e6",
     "T_Lymphoid_GammaDelta": "#f781bf",
+
     "T_Lymphoid_NKT": "#ffe6f2",
     "NK cells": "#e7fa3d",
     "T_Lymphoid_Other": "#f89bc3",
@@ -229,5 +230,25 @@
     "Endothelial/Vascular": "#ff7f0e",
     "HSPC_or_Unknown": "#d6d6d6",
     "Undetermined": "#d6d6d6"
-  }
+  },
+"t_cell_colors" : {
+
+    "Conventional_CD8_CAR_neg": "#8A6A00",
+    "Conventional_CD8_CAR_pos": "#E6D27A",
+
+    "Conventional_CD4_CAR_neg": "#FF8552",
+    "Conventional_CD4_CAR_pos": "#F9AD8D",
+
+    "Unconventional_T_ILC_CAR_neg": "#4B3F72",
+    "Unconventional_T_ILC_CAR_pos": "#B7B0E3",
+
+    "Treg_CAR_neg": "#4A4A4A",
+    "Treg_CAR_pos": "#CFCFCF",
+
+    "Cycling_T_NK_CAR_neg": "#BC4B51",
+    "Cycling_T_NK_CAR_pos": "#EFABAE",
+
+    "NK_CAR_neg": "#C8E6E5",
+    "NK_CAR_pos": "#C0FDFB"
+}
 }

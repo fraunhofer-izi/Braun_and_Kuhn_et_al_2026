@@ -1,0 +1,43 @@
+name: spatialenv_publication
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - python=3.11
+
+  # core
+  - numpy>=2.0
+  - pandas>=2.2,<3
+  - scipy
+  - pyyaml
+  - pillow
+  - matplotlib
+
+  # scanpy stack
+  - anndata>=0.11
+  - scanpy>=1.11
+  - numba
+  - scikit-image
+  - scikit-misc
+  - squidpy
+
+  # clustering
+  - python-igraph
+  - leidenalg
+
+  # spatial stack
+  - spatialdata=0.5
+  - spatialdata-io=0.3
+  - spatialdata-plot=0.2
+
+  # annotaion
+  - decoupler-py=2.1.1
+
+  # notebooks / pipeline utils (optional)
+  - jupyter
+  - papermill
+
+  - pip
+  - pip:
+      - HERGAST @ git+https://github.com/GYQ-form/HERGAST.git@bb3e2d0f2bd1dc78e8b171ca0d1dc1f4fb2d863f

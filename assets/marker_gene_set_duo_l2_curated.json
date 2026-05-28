@@ -1,0 +1,304 @@
+{
+    "Absorptive": [
+        "ANPEP",
+        "APOA4",
+        "APOB",
+        "CDHR5",
+        "FABP1",
+        "RBP2",
+        "FABP2", 
+        "CA2", 
+        "SLC26A2"
+    ],
+    "B_plasma": [
+        "XBP1",
+        "MZB1",
+        "IGHA1",
+        "IGKC",
+        "JCHAIN",
+        "SDC1",
+        "IGHG1",
+        "IGHG2",
+        "IGHG3", 
+        "IGHG4"
+    ],
+    "Conventional_CD4": [
+        "CD3D",
+        "CD4",
+        "CD40LG",
+        "CCR7",
+        "IL7R"
+    ],
+    "Treg": [
+        "CD27",
+        "FOXP3",
+        "CTLA4",
+        "CD3D",
+        "TIGIT",
+        "IL2RA"
+    ],
+    "Conventional_CD8": [
+        "CCL5",
+        "CD2",
+        "CD3D",
+        "CD8A",
+        "CD8B",
+        "GZMB",
+        "PRF1"
+    ],
+    "Cycling_T_NK": [
+        "ARHGDIB",
+        "CORO1A",
+        "HMGB2",
+        "RAC2",
+        "TUBA1B",
+        "TYMS",
+        "MKI67",
+        "TOP2A",
+        "PCNA"
+    ],
+    "Cycling_epithelia": [
+        "AGR2",
+        "HMGB2",
+        "LGALS3",
+        "PCLAF",
+        "TSPAN8",
+        "TUBA1B",
+        "MKI67",
+        "TOP2A",
+        "PCNA"
+    ],
+    "Cycling_endothelia": [
+        "EGFL7",
+        "HMGB2",
+        "PLVAP",
+        "RAMP2",
+        "TOP2A",
+        "TUBA1B"
+    ],
+    "Enteroendocrine": [
+        "CHGA",
+        "NEUROD1",
+        "PCSK1N",
+        "CHGB"
+    ],
+    "Epithelial_progenitor": [
+        "AFP",
+        "AGR2",
+        "APOA1",
+        "APOE",
+        "CLDN6",
+        "FGB",
+        "FGG"
+    ],
+    "Epithelial_stem": [
+        "AGR2",
+        "JUN",
+        "LGR5",
+        "SLC12A2",
+        "SPINK1",
+        "TSPAN8",
+        "ASCL2",
+        "SMOC2",
+        "RGMB"
+    ],
+    "Erythrocyte": [
+        "HBA1",
+        "HBA2",
+        "HBB"
+    ],
+    "Fibroblast": [
+        "COL6A3",
+        "CXCL14",
+        "NBL1",
+        "PDGFRA",
+        "PDLIM1",
+        "PTN"
+    ],
+    "Glia": [
+        "PLP1",
+        "S100B",
+        "FOXD3",
+        "MPZ",
+        "CDH19",
+        "SOX10",
+        "ERBB3"
+    ],
+    "Granulocyte": [
+        "CPA3",
+        "TPSAB1",
+        "TPSB2",
+        "HPGDS",
+        "GATA2"
+    ],
+    "Immature_B": [
+        "CD79B",
+        "IGHM",
+        "RCSD1"
+    ],
+    "DC": [
+        "CLEC9A",
+        "CLEC10A",
+        "CD1C",
+        "CLEC4C",
+        "XCR1",
+        "LAMP3"
+    ],
+    "Intestinal_Cajal_cell": [
+        "KIT",
+        "ANO1",
+        "EDN3",
+        "ETV1",
+        "FHL2",
+        "KCTD12"
+    ],
+    "Lymphatic_endothelia": [
+        "CCL21",
+        "CLDN5",
+        "TFPI",
+        "PROX1",
+        "LYVE1"
+    ],
+    "Lymphoid_stromal_cell": [
+        "C1S",
+        "CCL19",
+        "CTSK",
+        "HLA-B",
+        "NFKBIA",
+        "SELENOM"
+    ],
+    "Macrophage": [
+        "C1QA",
+        "C1QB",
+        "C1QC",
+        "CSF1R",
+        "CST3",
+        "SELENOP"
+    ],
+    "Mature_B": [
+        "CD74",
+        "CD79A",
+        "ICAM3",
+        "MS4A1"
+    ],
+    "Mesoderm": [
+        "COL1A1",
+        "COL3A1",
+        "FIBIN",
+        "GPC3",
+        "MDK"
+    ],
+    "Mesothelium": [
+        "KRT19",
+        "UPK3B",
+        "LRRN4",
+        "TNNT1",
+        "RASSF7",
+        "KLK11"
+    ],
+    "Microfold": [
+        "CCL25",
+        "CCL20",
+        "GP2",
+        "PRAP1",
+        "SERPINA1"
+    ],
+    "Monocyte": [
+        "FCER1G",
+        "LYZ",
+        "S100A9",
+        "SRGN",
+        "TSPO",
+        "FCN1",
+        "TYROBP"
+    ],
+    "NK": [
+        "CMC1",
+        "EOMES",
+        "GZMA",
+        "IFITM2",
+        "KLRB1",
+        "NKG7",
+        "PRF1"
+    ],
+    "Myofibroblast": [
+        "DCN",
+        "HHIP",
+        "ACTA2",
+        "RSPO2",
+        "FN1",
+        "LINC01082",
+        "MYLK",
+        "PITX1"
+    ],
+    "Unconventional_T_ILC": [
+        "ARHGDIB",
+        "CD52",
+        "KLRB1",
+        "LST1",
+        "TMIGD2",
+        "TRDC"
+    ],
+    "Neuron": [
+        "MAP1B",
+        "MLLT11",
+        "NREP",
+        "TUBA1A",
+        "TUBB2B",
+        "TUBB3"
+    ],
+    "Neuron_progenitor": [
+        "AP1S2",
+        "ASCL1",
+        "PLP1",
+        "SOX2-OT",
+        "SOX2"
+    ],
+    "Pericyte": [
+        "NOTCH3",
+        "MCAM",
+        "BGN",
+        "RGS5",
+        "CSPG4",
+        "COL4A2",
+        "MEF2C",
+        "NDUFA4L2",
+        "PDGFRB"
+    ],
+    "Secretory": [
+        "FCGBP",
+        "LGALS4",
+        "TFF3",
+        "CLCA1",
+        "SPDEF",
+        "ZG16",
+        "MUC2",
+        "MUC6","TFF2","MUC5AC"
+    ],
+    "Smooth_muscle": [
+        "DES",
+        "CNN1",
+        "ACTA2",
+        "ACTG2",
+        "MYL9",
+        "MYLK",
+        "TPM1",
+        "TPM2",
+        "MYH11"
+    ],
+    "Transit_amplifying": [
+        "DMBT1",
+        "GPX2",
+        "OLFM4",
+        "PIGR",
+        "REG1A"
+    ],
+    "Vascular_endothelia": [
+        "CD34",
+        "EGFL7",
+        "NPDC1",
+        "PECAM1",
+        "RAMP2",
+        "RNASE1"
+    ]
+}

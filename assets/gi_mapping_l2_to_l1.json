@@ -1,0 +1,52 @@
+{
+  "B and B plasma": [
+    "B_plasma",
+    "Immature_B",
+    "Mature_B"
+  ],
+  "Endothelial": [
+    "Vascular_endothelia",
+    "Lymphatic_endothelia",
+    "Cycling_endothelia"
+  ],
+  "Epithelial": [
+    "Absorptive",
+    "Secretory",
+    "Enteroendocrine",
+    "Epithelial_progenitor",
+    "Epithelial_stem",
+    "Transit_amplifying",
+    "Cycling_epithelia",
+    "Microfold",
+    "Mesothelium"
+  ],
+  "Mesenchymal": [
+    "Fibroblast",
+    "Myofibroblast",
+    "Pericyte",
+    "Mesoderm",
+    "Smooth_muscle",
+    "Intestinal_Cajal_cell",
+    "Lymphoid_stromal_cell"
+  ],
+  "Myeloid": [
+    "Monocyte",
+    "Macrophage",
+    "DC",
+    "Granulocyte",
+    "Erythrocyte"
+  ],
+  "Neural": [
+    "Neuron",
+    "Neuron_progenitor",
+    "Glia"
+  ],
+  "T and NK cells": [
+    "Conventional_CD4",
+    "Treg",
+    "Conventional_CD8",
+    "NK",
+    "Cycling_T_NK",
+    "Unconventional_T_ILC"
+  ]
+}
