@@ -50,12 +50,40 @@ Install the local `spatial_transcriptomics_analysis package in editable mode
 
 ### Requirements
 
-- Conda/Miniconda
-- Mamba
+- conda/miniforge installed 
+- mamba installed
+- GNU make installed
 
+tested with:
+mamba 1.4.1
+conda 23.1.0
+GNU make 4.3
 ---
 
-## 3. Run Pipeline 
+## 3. Download data
+
+Download the GEO dataset:
+
+```bash
+mkdir -p data/spaceranger/
+cd data/spaceranger/
+
+wget -O GSE317410_RAW.tar \
+"https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE317410&format=file"
+
+tar -xvf GSE317410_RAW.tar
+```
+
+After extraction, organize the processed SpaceRanger output directory as:
+
+```text
+data/spaceranger/Duodenum_run3/outs
+```
+
+The pipeline assumes this directory structure for downstream processing.
+
+
+## 4. Run Pipeline 
 
 The full analysis pipeline can be executed using:
 
@@ -67,7 +95,6 @@ The pipeline consists of the following stages:
 
 | Step                    | Script                 | Description                       |
 | ----------------------- | ---------------------- | --------------------------------- |
-| Download data           | `00_download_data/`    | Download and organize input data   |
 | Read SpaceRanger output | `01_read_spaceranger/` | Create SpatialData objects        |
 | Quality control         | `02_qc/`               | Cell and gene filtering           |
 | Clustering              | `03_cluster/`          | Spatial clustering and embedding  |

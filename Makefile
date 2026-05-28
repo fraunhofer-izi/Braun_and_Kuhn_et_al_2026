@@ -1,4 +1,4 @@
-.PHONY: conda_env_create 00_download_data 01_read 02_qc 03_cluster 04_anno all
+.PHONY: conda_env_create 01_read 02_qc 03_cluster 04_anno all
 
 # User-overridable settings
 SAMPLES ?= Skin Duodenum_run3
@@ -11,10 +11,7 @@ conda_env_create: $(ENV_FILE)
 	$(MAKE) install_local_package
 
 install_local_package:
-	conda run -n $(ENV_NAME) python -m pip install -e .
-
-00_download_data: scripts/00_download_data/Makefile
-	$(MAKE) -C scripts/00_download_data download_data
+	mamba run -n $(ENV_NAME) python -m pip install -e .
 
 01_read: scripts/01_read_spaceranger/Makefile
 	$(MAKE) -C scripts/01_read_spaceranger read ENV_NAME=$(ENV_NAME) SAMPLES="$(SAMPLES)" BASE_OUTPUT=$(BASE_OUTPUT)
@@ -28,4 +25,4 @@ install_local_package:
 04_anno: scripts/04_annotation/Makefile
 	$(MAKE) -C scripts/04_annotation anno ENV_NAME=$(ENV_NAME) SAMPLES="$(SAMPLES)" BASE_OUTPUT=$(BASE_OUTPUT)
 
-all: 00_download_data 01_read 02_qc 03_cluster 04_anno
+all: 01_read 02_qc 03_cluster 04_anno
