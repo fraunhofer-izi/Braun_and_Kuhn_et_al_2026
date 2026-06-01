@@ -1,3 +1,10 @@
+# Copyright 2026 Fraunhofer-Gesellschaft zur Förderung der angewandten
+# Forschung e.V.
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License.
+
 import logging
 import os
 import matplotlib.pyplot as plt
@@ -10,6 +17,7 @@ from scipy.stats import median_abs_deviation
 # Logger konfigurieren
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
 
 def calculate_qc(adata):
     """
@@ -27,6 +35,7 @@ def calculate_qc(adata):
     sc.pp.calculate_qc_metrics(adata, qc_vars=["mito", "ribo"], inplace=True)
     return adata
 
+
 def filter_adata_genes_cells(adata, min_cells, min_counts):
     """Filters genes and cells in an AnnData object based on minimum cell and count thresholds.
 
@@ -43,9 +52,10 @@ def filter_adata_genes_cells(adata, min_cells, min_counts):
     sc.pp.filter_cells(adata, min_counts=min_counts)
     return adata
 
+
 def is_outlier(adata, metric: str, nmads: int):
     """
-    Identify outliers in a given metric of an AnnData object based on the median and 
+    Identify outliers in a given metric of an AnnData object based on the median and
     median absolute deviation (MAD).
 
     Parameters:
@@ -55,7 +65,7 @@ def is_outlier(adata, metric: str, nmads: int):
     metric : str
         The key in `adata.obs` corresponding to the metric to evaluate for outliers.
     nmads : int
-        The number of median absolute deviations (MADs) to use as the threshold for 
+        The number of median absolute deviations (MADs) to use as the threshold for
         identifying outliers.
 
     Returns:
@@ -68,6 +78,7 @@ def is_outlier(adata, metric: str, nmads: int):
         np.median(M) + nmads * median_abs_deviation(M) < M
     )
     return outlier
+
 
 def qc_plots(adata, output_path):
     """
@@ -107,7 +118,9 @@ def qc_plots(adata, output_path):
     axes[0, 0].set_xlabel("total_counts")
 
     # 2. Violin plot for pct_counts_mito
-    sns.violinplot(y=adata.obs["pct_counts_mito"], ax=axes[0, 1], inner="box", color="skyblue")
+    sns.violinplot(
+        y=adata.obs["pct_counts_mito"], ax=axes[0, 1], inner="box", color="skyblue"
+    )
     axes[0, 1].set_title("Mitochondrial Content (%)")
     axes[0, 1].set_ylabel("pct_counts_mito")
 
@@ -126,7 +139,9 @@ def qc_plots(adata, output_path):
     axes[1, 0].set_ylabel("n_genes_by_counts")
 
     # 4. Violin for n_genes_by_counts
-    sns.violinplot(y=adata.obs["n_genes_by_counts"], ax=axes[1, 1], inner="box", color="lightgreen")
+    sns.violinplot(
+        y=adata.obs["n_genes_by_counts"], ax=axes[1, 1], inner="box", color="lightgreen"
+    )
     axes[1, 1].set_title("Number of Genes by Counts")
     axes[1, 1].set_ylabel("n_genes_by_counts")
 
@@ -146,21 +161,41 @@ def qc_plots_combined(adata, filtered_adata, output_path):
     # Combine metadata into one DataFrame with a label
     # Combine metadata into one DataFrame with a label
     # Combine metadata safely with source labels, dropping the index to avoid reindex issues
-    adata_df = adata.obs[["total_counts", "pct_counts_mito", "n_genes_by_counts"]].copy()
+    adata_df = adata.obs[
+        ["total_counts", "pct_counts_mito", "n_genes_by_counts"]
+    ].copy()
     adata_df["source"] = "before"
-    filtered_df = filtered_adata.obs[["total_counts", "pct_counts_mito", "n_genes_by_counts"]].copy()
+    filtered_df = filtered_adata.obs[
+        ["total_counts", "pct_counts_mito", "n_genes_by_counts"]
+    ].copy()
     filtered_df["source"] = "after"
 
     # Drop index explicitly to ensure no duplicate labels
     combined = pd.concat([adata_df, filtered_df], ignore_index=True)
 
     # 1. Histogram of total counts
-    sns.histplot(data=combined, x="total_counts", hue="source", bins=100, ax=axes[0, 0], element="step", stat="density", common_norm=False)
+    sns.histplot(
+        data=combined,
+        x="total_counts",
+        hue="source",
+        bins=100,
+        ax=axes[0, 0],
+        element="step",
+        stat="density",
+        common_norm=False,
+    )
     axes[0, 0].set_title("Total Counts Histogram")
     axes[0, 0].set_xlabel("total_counts")
 
     # 2. Violin plot for pct_counts_mito
-    sns.violinplot(data=combined, y="pct_counts_mito", x="source", ax=axes[0, 1], inner="box", palette="pastel")
+    sns.violinplot(
+        data=combined,
+        y="pct_counts_mito",
+        x="source",
+        ax=axes[0, 1],
+        inner="box",
+        palette="pastel",
+    )
     axes[0, 1].set_title("Mitochondrial Content (%)")
     axes[0, 1].set_ylabel("pct_counts_mito")
 
@@ -171,7 +206,7 @@ def qc_plots_combined(adata, filtered_adata, output_path):
         c=adata.obs["pct_counts_mito"],
         cmap="viridis",
         s=2,
-        label="before"
+        label="before",
     )
     axes[1, 0].scatter(
         filtered_adata.obs["total_counts"],
@@ -180,7 +215,7 @@ def qc_plots_combined(adata, filtered_adata, output_path):
         cmap="cool",
         s=2,
         label="after",
-        alpha=0.6
+        alpha=0.6,
     )
     cbar = fig.colorbar(sc, ax=axes[1, 0])
     cbar.set_label("pct_counts_mito")
@@ -190,16 +225,24 @@ def qc_plots_combined(adata, filtered_adata, output_path):
     axes[1, 0].legend()
 
     # 4. Violin plot for n_genes_by_counts
-    sns.violinplot(data=combined, y="n_genes_by_counts", x="source", ax=axes[1, 1], inner="box", palette="Set2")
+    sns.violinplot(
+        data=combined,
+        y="n_genes_by_counts",
+        x="source",
+        ax=axes[1, 1],
+        inner="box",
+        palette="Set2",
+    )
     axes[1, 1].set_title("Number of Genes by Counts")
     axes[1, 1].set_ylabel("n_genes_by_counts")
 
     # 5. Bar plot: Number of cells before vs. after
-    cell_counts = pd.DataFrame({
-        "source": ["before", "after"],
-        "n_cells": [adata.n_obs, filtered_adata.n_obs]
-    })
-    sns.barplot(data=cell_counts, x="source", y="n_cells", ax=axes[2, 0], palette="muted")
+    cell_counts = pd.DataFrame(
+        {"source": ["before", "after"], "n_cells": [adata.n_obs, filtered_adata.n_obs]}
+    )
+    sns.barplot(
+        data=cell_counts, x="source", y="n_cells", ax=axes[2, 0], palette="muted"
+    )
     axes[2, 0].set_title("Total Number of Cells")
     axes[2, 0].set_ylabel("Cell Count")
     axes[2, 0].set_xlabel("")

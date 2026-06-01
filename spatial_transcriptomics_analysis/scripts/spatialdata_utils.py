@@ -1,3 +1,10 @@
+# Copyright 2026 Fraunhofer-Gesellschaft zur Förderung der angewandten
+# Forschung e.V.
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License.
+
 from typing import Dict
 import numpy as np
 import spatialdata as sd
@@ -13,7 +20,9 @@ from PIL import Image
 from typing import Dict, Tuple
 
 import logging
+
 logger = logging.getLogger(__name__)
+
 
 def read_visium_hd_segmented(outs_path: str, sample_id: str) -> TableModel:
     """
@@ -48,9 +57,7 @@ def read_visium_hd_segmented(outs_path: str, sample_id: str) -> TableModel:
                 "lowres": lowres_img,
             },
             "scalefactors": scalefactors,
-            "metadata": {
-                "source_image_path": "tissue_hires_image.png"
-            }
+            "metadata": {"source_image_path": "tissue_hires_image.png"},
         }
     }
 
@@ -58,7 +65,9 @@ def read_visium_hd_segmented(outs_path: str, sample_id: str) -> TableModel:
     shapes_name = "cell_segmentation"
     adata.obs[VisiumHDKeys.INSTANCE_KEY] = np.arange(len(adata))
     adata.obs[VisiumHDKeys.REGION_KEY] = shapes_name
-    adata.obs[VisiumHDKeys.REGION_KEY] = adata.obs[VisiumHDKeys.REGION_KEY].astype("category")
+    adata.obs[VisiumHDKeys.REGION_KEY] = adata.obs[VisiumHDKeys.REGION_KEY].astype(
+        "category"
+    )
 
     # Attach QC metrics (optional)
     adata.var_names_make_unique()
@@ -68,7 +77,10 @@ def read_visium_hd_segmented(outs_path: str, sample_id: str) -> TableModel:
     sc.pp.calculate_qc_metrics(adata, qc_vars=["mito", "ribo"], inplace=True)
 
     # Load cell shapes
-    shapes = spatialdata_io.geojson(outs_path / "segmented_outputs" / "cell_segmentations.geojson", coordinate_system=sample_id)
+    shapes = spatialdata_io.geojson(
+        outs_path / "segmented_outputs" / "cell_segmentations.geojson",
+        coordinate_system=sample_id,
+    )
 
     # Match shape order to adata
     centroids = shapes.geometry.centroid
@@ -78,8 +90,10 @@ def read_visium_hd_segmented(outs_path: str, sample_id: str) -> TableModel:
     areas = shapes.geometry.area
     mean_area = np.mean(areas)
     diameter_pixels = 2 * np.sqrt(mean_area / np.pi)
-    adata.uns["spatial"][library_id]["scalefactors"]["spot_diameter_fullres"] = diameter_pixels
-    
+    adata.uns["spatial"][library_id]["scalefactors"][
+        "spot_diameter_fullres"
+    ] = diameter_pixels
+
     return TableModel.parse(
         adata=adata,
         region=shapes_name,
@@ -88,7 +102,9 @@ def read_visium_hd_segmented(outs_path: str, sample_id: str) -> TableModel:
     )
 
 
-def load_visiumhd_scalefactors_and_images(outs_path: Path) -> Tuple[dict, Dict[str, np.ndarray], str]:
+def load_visiumhd_scalefactors_and_images(
+    outs_path: Path,
+) -> Tuple[dict, Dict[str, np.ndarray], str]:
     """
     Load scalefactors and required images from VisiumHD output folder.
     """
@@ -112,7 +128,7 @@ def add_table_to_shapes(
     library_id: str,
     scalefactors: dict,
     images: Dict[str, np.ndarray],
-    source_image_path: str
+    source_image_path: str,
 ) -> TableModel:
     """
     Link AnnData and Segmentation shapes, add spatial metadata for scanpy/squidpy plotting and return a TableModel.
@@ -121,7 +137,7 @@ def add_table_to_shapes(
         library_id: {
             "images": images,
             "scalefactors": scalefactors,
-            "metadata": {"source_image_path": source_image_path}
+            "metadata": {"source_image_path": source_image_path},
         }
     }
 
@@ -134,7 +150,9 @@ def add_table_to_shapes(
 
     areas = shapes.geometry.area
     diameter_pixels = 2 * np.sqrt(np.mean(areas) / np.pi)
-    adata.uns["spatial"][library_id]["scalefactors"]["spot_diameter_fullres"] = diameter_pixels
+    adata.uns["spatial"][library_id]["scalefactors"][
+        "spot_diameter_fullres"
+    ] = diameter_pixels
 
     return TableModel.parse(
         adata=adata,
@@ -142,6 +160,7 @@ def add_table_to_shapes(
         region_key="region",
         instance_key="location_id",
     )
+
 
 def prepare_sample_adatas(sample_paths):
     """
@@ -155,7 +174,9 @@ def prepare_sample_adatas(sample_paths):
         if "cell_bins" not in sdata.tables:
             raise KeyError(f"'cell_bins' not found in {sample_name}")
         adata = sdata.tables["cell_bins"].copy()
-        sc.pp.calculate_qc_metrics(adata, inplace=True)  # ensures all relevant metrics are present
+        sc.pp.calculate_qc_metrics(
+            adata, inplace=True
+        )  # ensures all relevant metrics are present
         adatas[sample_name] = adata
         sdatas[sample_name] = sdata
     return adatas, sdatas

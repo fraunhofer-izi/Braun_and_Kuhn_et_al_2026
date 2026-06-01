@@ -1,3 +1,10 @@
+# Copyright 2026 Fraunhofer-Gesellschaft zur Förderung der angewandten
+# Forschung e.V.
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License.
+
 import json
 import os
 from pathlib import Path
@@ -28,11 +35,6 @@ from plotnine import (
 )
 from spatial_transcriptomics_analysis.scripts.anndata_plotting import (
     crop_region_by_fraction,
-)
-from plotnine import (
-    theme,
-    element_text,
-    element_blank,
 )
 
 
