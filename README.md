@@ -200,3 +200,11 @@ If you use this repository, please cite:
 # Contact
 
 For questions regarding the analysis pipeline, please open an issue in the repository.
+
+---
+
+# License
+
+Copyright 2025 Fraunhofer-Gesellschaft zur Förderung der angewandten Forschung e.V.
+
+Licensed under the GPL-3.0. You may obtain a copy of the License in the LICENSE file.
