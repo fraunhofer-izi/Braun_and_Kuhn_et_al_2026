@@ -1,3 +1,10 @@
+# Copyright 2026 Fraunhofer-Gesellschaft zur Förderung der angewandten
+# Forschung e.V.
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License.
+
 from __future__ import annotations
 import scanpy as sc
 import HERGAST
@@ -11,6 +18,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import os
 import logging
+
 logger = logging.getLogger(__name__)
 
 
@@ -22,9 +30,12 @@ def attach_qc_metrics(adata: sc.AnnData) -> sc.AnnData:
     sc.pp.calculate_qc_metrics(adata, qc_vars=["mito", "ribo"], inplace=True)
     return adata
 
+
 def annotate_with_panglao(
     adata: sc.AnnData,
-    panglao_file: Union[str, Path] = "/mnt/ribolution/user_worktmp/christina.kuhn/work/references/PanglaoDB_markers_27_Mar_2020.tsv",
+    panglao_file: Union[
+        str, Path
+    ] = "/mnt/ribolution/user_worktmp/christina.kuhn/work/references/PanglaoDB_markers_27_Mar_2020.tsv",
     species: str = "Hs",
     organs_of_interest: Optional[Sequence[str]] = None,
     specific_celltypes: Optional[Sequence[str]] = None,
@@ -80,7 +91,9 @@ def annotate_with_panglao(
         )
 
     # Filter by species (substring match to allow composite values)
-    df = df[df["species"].astype(str).str.contains(species, na=False, regex=False)].copy()
+    df = df[
+        df["species"].astype(str).str.contains(species, na=False, regex=False)
+    ].copy()
 
     # Optional filters
     if organs_of_interest is not None:
@@ -100,7 +113,9 @@ def annotate_with_panglao(
 
     if specific_celltypes is not None:
         keep = set(specific_celltypes)
-        celltype_to_genes = {ct: genes for ct, genes in celltype_to_genes.items() if ct in keep}
+        celltype_to_genes = {
+            ct: genes for ct, genes in celltype_to_genes.items() if ct in keep
+        }
 
     # Intersect with genes present in the AnnData
     valid_genes = set(map(str, adata.var_names))
@@ -109,7 +124,9 @@ def annotate_with_panglao(
         for ct, genes in celltype_to_genes.items()
     }
     # Drop any empty sets to avoid score_genes errors
-    celltype_to_genes = {ct: genes for ct, genes in celltype_to_genes.items() if len(genes) > 0}
+    celltype_to_genes = {
+        ct: genes for ct, genes in celltype_to_genes.items() if len(genes) > 0
+    }
 
     if not celltype_to_genes:
         raise ValueError(
@@ -156,16 +173,19 @@ def annotate_with_panglao(
 
     return adata
 
+
 def annotate_with_panglao_aucell(
     adata: sc.AnnData,
-    panglao_file: Union[str, Path] = "/mnt/ribolution/user_worktmp/christina.kuhn/work/references/PanglaoDB_markers_27_Mar_2020.tsv",
+    panglao_file: Union[
+        str, Path
+    ] = "/mnt/ribolution/user_worktmp/christina.kuhn/work/references/PanglaoDB_markers_27_Mar_2020.tsv",
     species: str = "Hs",
     organs_of_interest: Optional[Sequence[str]] = None,
     specific_celltypes: Optional[Sequence[str]] = None,
-    score_threshold: float = 0.1,            # AUCell is in [0,1]; 0.05–0.1 are common starting points
+    score_threshold: float = 0.1,  # AUCell is in [0,1]; 0.05–0.1 are common starting points
     score_prefix: str = "panglao",
-    min_markers_per_set: int = 5,            # drop very small sets (AUCell is fine, but tiny sets are noisy)
-    use_raw: bool = False,                    # pass through to decoupler (rank-based, raw not required)
+    min_markers_per_set: int = 5,  # drop very small sets (AUCell is fine, but tiny sets are noisy)
+    use_raw: bool = False,  # pass through to decoupler (rank-based, raw not required)
     inplace: bool = True,
 ) -> sc.AnnData:
     """
@@ -189,10 +209,14 @@ def annotate_with_panglao_aucell(
     required_cols = {"species", "organ", "cell type", "official gene symbol"}
     missing = required_cols.difference(df.columns)
     if missing:
-        raise ValueError(f"PanglaoDB table missing required columns: {', '.join(sorted(missing))}")
+        raise ValueError(
+            f"PanglaoDB table missing required columns: {', '.join(sorted(missing))}"
+        )
 
     # species filter (substring to allow composite notations)
-    df = df[df["species"].astype(str).str.contains(species, na=False, regex=False)].copy()
+    df = df[
+        df["species"].astype(str).str.contains(species, na=False, regex=False)
+    ].copy()
 
     if organs_of_interest is not None:
         organs_set = set(organs_of_interest)
@@ -211,7 +235,9 @@ def annotate_with_panglao_aucell(
 
     if specific_celltypes is not None:
         keep = set(specific_celltypes)
-        celltype_to_genes = {ct: genes for ct, genes in celltype_to_genes.items() if ct in keep}
+        celltype_to_genes = {
+            ct: genes for ct, genes in celltype_to_genes.items() if ct in keep
+        }
 
     # Intersect with genes present in AnnData
     valid_genes = set(map(str, adata.var_names))
@@ -222,7 +248,9 @@ def annotate_with_panglao_aucell(
 
     # Drop empty or tiny sets
     celltype_to_genes = {
-        ct: genes for ct, genes in celltype_to_genes.items() if len(genes) >= min_markers_per_set
+        ct: genes
+        for ct, genes in celltype_to_genes.items()
+        if len(genes) >= min_markers_per_set
     }
 
     if not celltype_to_genes:
@@ -238,11 +266,7 @@ def annotate_with_panglao_aucell(
 
     # Run AUCell (rank-based enrichment per cell)
     # Results: adata.obsm['aucell_estimate'] with columns per 'source' (cell type)
-    dc.mt.aucell(
-        adata,
-        net,
-        tmin=5
-    )
+    dc.mt.aucell(adata, net, tmin=5)
     aucell = adata.obsm["score_aucell"].copy()
 
     # --- Write per-celltype scores into obs with your naming scheme
@@ -271,7 +295,9 @@ def annotate_with_panglao_aucell(
 
     # Threshold and filtered label
     th = float(score_threshold)
-    filt_label = top_ct.where(max_score_val >= th, other="Undetermined").astype("category")
+    filt_label = top_ct.where(max_score_val >= th, other="Undetermined").astype(
+        "category"
+    )
     adata.obs[f"{score_prefix}_celltype_filtered"] = filt_label
 
     return adata
@@ -283,10 +309,7 @@ from scipy.stats import gaussian_kde
 import numpy as np
 
 
-
-def find_first_valley(scores,
-                      min_points: int = 50,
-                      grid_size: int = 800):
+def find_first_valley(scores, min_points: int = 50, grid_size: int = 800):
     """
     Findet das erste sinnvolle Tal (lokales Minimum) zwischen den beiden
     links-liegenden Hauptpeaks der Dichteverteilung.
@@ -346,7 +369,6 @@ def find_first_valley(scores,
     return valley_x
 
 
-
 def annotate_with_custom_aucell(
     adata: sc.AnnData,
     json_file: Union[str, Path],
@@ -386,7 +408,9 @@ def annotate_with_custom_aucell(
         missing = [g for g in genes if g not in valid_genes]
 
         if missing:
-            missing_gene_info.append({"celltype": ct, "missing_genes": ",".join(missing)})
+            missing_gene_info.append(
+                {"celltype": ct, "missing_genes": ",".join(missing)}
+            )
 
         if len(present) >= min_markers_per_set:
             celltype_to_genes[ct] = present
@@ -468,8 +492,10 @@ def annotate_with_custom_aucell(
     for fig in plot_dict.values():
         fig.show()
 
-    print("Computed quantile thresholds:\n" +
-          "\n".join([f"  {ct}: {thr:.4f}" for ct, thr in thresholds.items()]))
+    print(
+        "Computed quantile thresholds:\n"
+        + "\n".join([f"  {ct}: {thr:.4f}" for ct, thr in thresholds.items()])
+    )
 
     # -------------------------
     # Assign celltypes based on thresholds
@@ -541,7 +567,9 @@ def annotate_with_custom_aucell_threshold(
         missing = [g for g in genes if g not in valid_genes]
 
         if missing:
-            missing_gene_info.append({"celltype": ct, "missing_genes": ",".join(missing)})
+            missing_gene_info.append(
+                {"celltype": ct, "missing_genes": ",".join(missing)}
+            )
 
         if len(present) >= min_markers_per_set:
             celltype_to_genes[ct] = present
@@ -593,6 +621,7 @@ def annotate_with_custom_aucell_threshold(
     adata.obs[f"{score_prefix}_celltypes_passing"] = celltypes_passing_all
 
     return adata
+
 
 def check_l2_matches_l1(
     adata,
@@ -680,34 +709,42 @@ def check_l2_matches_l1(
 
     return adata
 
+
 def cluster_based_on_gex(adata: sc.AnnData) -> sc.AnnData:
     sc.settings.n_jobs = -1
     sc.pp.normalize_total(adata, target_sum=1e4)
     sc.pp.log1p(adata)
     adata_scaled = adata.copy()
-    sc.pp.highly_variable_genes(adata_scaled, n_top_genes=1500, flavor="seurat_v3", inplace=True)
+    sc.pp.highly_variable_genes(
+        adata_scaled, n_top_genes=1500, flavor="seurat_v3", inplace=True
+    )
     adata_scaled = adata_scaled[:, adata_scaled.var.highly_variable]
     sc.pp.scale(adata_scaled)
 
     for method in ["pca", "neighbors", "umap", "leiden"]:
         if method == "pca":
             sc.tl.pca(adata_scaled, n_comps=100)  # compute more PCs than needed
-            vr = adata_scaled.uns['pca']['variance_ratio']
+            vr = adata_scaled.uns["pca"]["variance_ratio"]
             dvr = np.diff(vr)  # drop in variance explained
             # first PC index where the drop gets small and stays small
             n_pcs = int(np.argmax(dvr < 0.001) + 1) or 30
             n_pcs = max(20, min(n_pcs, 60))  # enforce bounds
-            adata_scaled.uns['n_pcs_opt'] = n_pcs  # store for later
+            adata_scaled.uns["n_pcs_opt"] = n_pcs  # store for later
         elif method == "neighbors":
-            sc.pp.neighbors(adata_scaled, n_neighbors=15,
-                            n_pcs=int(adata_scaled.uns.get('n_pcs_opt', 50)))
+            sc.pp.neighbors(
+                adata_scaled,
+                n_neighbors=15,
+                n_pcs=int(adata_scaled.uns.get("n_pcs_opt", 50)),
+            )
         elif method == "umap":
             sc.tl.umap(adata_scaled)
         elif method == "leiden":
             resolutions = np.arange(0.1, 1.1, 0.1)
             for res in resolutions:
                 key = f"leiden_{res:.1f}".replace(".", "_")  # e.g., leiden_0_1
-                sc.tl.leiden(adata_scaled, resolution=res, key_added=key, random_state=2024)
+                sc.tl.leiden(
+                    adata_scaled, resolution=res, key_added=key, random_state=2024
+                )
     # Copy embeddings & clustering result back
     adata.obsm["X_pca_GEX"] = adata_scaled.obsm["X_pca"]
     adata.obsm["X_umap_GEX"] = adata_scaled.obsm["X_umap"]
@@ -723,8 +760,9 @@ def cluster_based_on_gex(adata: sc.AnnData) -> sc.AnnData:
     for res in resolutions:
         key = f"leiden_{res:.1f}".replace(".", "_")
         adata.obs[key] = adata_scaled.obs[key]
-    adata.uns['n_pcs_opt'] = adata_scaled.uns['n_pcs_opt']
+    adata.uns["n_pcs_opt"] = adata_scaled.uns["n_pcs_opt"]
     return adata
+
 
 def clustering_with_hergast(adata: sc.AnnData) -> sc.AnnData:
     tmp = adata.copy()
@@ -736,15 +774,22 @@ def clustering_with_hergast(adata: sc.AnnData) -> sc.AnnData:
     sc.pp.scale(tmp)
     sc.pp.pca(tmp, n_comps=100)
     HERGAST.utils.Cal_Spatial_Net(tmp)
-    HERGAST.utils.Cal_Expression_Net(tmp, dim_reduce='PCA')
-    train_HERGAST = HERGAST.Train_HERGAST(tmp, batch_data=True, num_batch_x_y=(7,7), spatial_net_arg={'verbose':False},
-                                      exp_net_arg={'verbose':False},dim_reduction='PCA',device_idx=0)
+    HERGAST.utils.Cal_Expression_Net(tmp, dim_reduce="PCA")
+    train_HERGAST = HERGAST.Train_HERGAST(
+        tmp,
+        batch_data=True,
+        num_batch_x_y=(7, 7),
+        spatial_net_arg={"verbose": False},
+        exp_net_arg={"verbose": False},
+        dim_reduction="PCA",
+        device_idx=0,
+    )
     train_HERGAST.train_HERGAST(n_epochs=200)
-    sc.pp.neighbors(tmp, use_rep='HERGAST')
+    sc.pp.neighbors(tmp, use_rep="HERGAST")
     sc.tl.umap(tmp)
-    sc.tl.leiden(tmp, random_state=2024, resolution=0.3, key_added='leiden_HERGAST_0_3')
-    sc.tl.leiden(tmp, random_state=2024, resolution=0.4, key_added='leiden_HERGAST_0_4')
-    sc.tl.leiden(tmp, random_state=2024, resolution=0.5, key_added='leiden_HERGAST_0_5')
+    sc.tl.leiden(tmp, random_state=2024, resolution=0.3, key_added="leiden_HERGAST_0_3")
+    sc.tl.leiden(tmp, random_state=2024, resolution=0.4, key_added="leiden_HERGAST_0_4")
+    sc.tl.leiden(tmp, random_state=2024, resolution=0.5, key_added="leiden_HERGAST_0_5")
 
     adata.obsp["connectivities_HERGAST"] = tmp.obsp["connectivities"].copy()
     if "distances" in tmp.obsp:
@@ -755,16 +800,17 @@ def clustering_with_hergast(adata: sc.AnnData) -> sc.AnnData:
     adata.obs["leiden_HERGAST_0_5"] = tmp.obs["leiden_HERGAST_0_5"].copy()
     adata.obsm["X_umap_HERGAST"] = tmp.obsm["X_umap"].copy()
     adata.obsm["X_pca_HERGAST"] = tmp.obsm["X_pca"].copy()
-    adata.uns['HERGAST'] = {
-        'n_epochs': 200,
-        'batch_data': True,
-        'num_batch_x_y':  [7, 7],
-        'spatial_net_arg': {'verbose': False},
-        'exp_net_arg': {'verbose': False},
-        'dim_reduction': 'PCA',
-        'device_idx': 0
+    adata.uns["HERGAST"] = {
+        "n_epochs": 200,
+        "batch_data": True,
+        "num_batch_x_y": [7, 7],
+        "spatial_net_arg": {"verbose": False},
+        "exp_net_arg": {"verbose": False},
+        "dim_reduction": "PCA",
+        "device_idx": 0,
     }
     return adata
+
 
 def extract_metric_df(adatas: dict, metric: str) -> pd.DataFrame:
     """
@@ -774,10 +820,7 @@ def extract_metric_df(adatas: dict, metric: str) -> pd.DataFrame:
     for sample_name, adata in adatas.items():
         if metric not in adata.obs.columns:
             raise ValueError(f"Metric '{metric}' not found in '{sample_name}'")
-        df = pd.DataFrame({
-            "value": adata.obs[metric],
-            "sample": sample_name
-        })
+        df = pd.DataFrame({"value": adata.obs[metric], "sample": sample_name})
         data.append(df)
     return pd.concat(data, ignore_index=True)
 
